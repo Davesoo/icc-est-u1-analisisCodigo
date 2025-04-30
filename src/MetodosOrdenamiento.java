@@ -20,7 +20,6 @@ public class MetodosOrdenamiento {
             }
         }
         return arreglo;
-
     }
 
     // Método de burbuja tradicional con errores
