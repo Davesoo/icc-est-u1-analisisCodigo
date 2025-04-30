@@ -131,7 +131,10 @@ public class MetodosOrdenamiento {
     }
 
     // Método de inserción con errores
-    // Error encontrado:
+    // Error encontrado: En la condición del while falta un signo para completar la condición en la primera comparación y tiene mal el signo de la segunda comparación.
+    // Solución:
+    // 1. Comparación: Agregarle un =
+    // 2. Comparación: Cambiar el signo por el >
     public int[] insercionPrimero(int[] arregloOriginal) {
 
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
@@ -139,7 +142,7 @@ public class MetodosOrdenamiento {
             int key = arreglo[j];
             int i = j - 1;
 
-            while (i > 0 && arreglo[i] > key) {
+            while (i >= 0 && arreglo[i] > key) {
                 arreglo[i + 1] = arreglo[i];
                 i--;
             }
@@ -149,7 +152,8 @@ public class MetodosOrdenamiento {
     }
 
     // Método de inserción con errores
-    // Error encontrado:
+    // Error encontrado: Dentro del segundo for todas las varianles j están mal instanciadas.
+    // Solución: Reemplazar todas las variables j dentro del segundo for.
     public int[] insercionSegundo(int[] arregloOriginal) {
 
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
@@ -157,8 +161,8 @@ public class MetodosOrdenamiento {
             int actual = arreglo[j];
 
             int i = j - 1;
-            for (; j >= 0 && arreglo[j] > actual; j--) {
-                arreglo[j + 1] = arreglo[j];
+            for (; i >= 0 && arreglo[i] > actual; i--) {
+                arreglo[i + 1] = arreglo[i];
             }
             arreglo[i + 1] = actual;
         }
@@ -166,17 +170,18 @@ public class MetodosOrdenamiento {
     }
 
     // Método de inserción con errores
-    // Error encontrado:
+    // Error encontrado: Dentro del for está mal instanciado i, dentro del while está mal el i++, la primera y segunda comparación de la condición.
+    // Solución: i es = j - i, dentro del while la i es i--, la primera condición es >= y la segunda es >.
     public int[] insercionTercero(int[] arregloOriginal) {
 
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
         for (int j = 1; j < arreglo.length; j++) {
             int key = arreglo[j];
-            int i = j;
+            int i = j - 1;
 
-            while (i > 0 && arreglo[i] < key) {
+            while (i >= 0 && arreglo[i] > key) {
                 arreglo[i + 1] = arreglo[i];
-                i++;
+                i--;
             }
             arreglo[i + 1] = key;
         }
